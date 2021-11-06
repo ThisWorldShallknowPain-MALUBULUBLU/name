@@ -1,0 +1,26 @@
+import pandas as pd 
+
+while(1):
+  print("1.Create a DataFrame using csv file")
+  print("2.Perform Boolean selection:Selection of greater values")
+  print("3.Perform Boolean selection:Replacing of even numbers with 1")
+  print("4.Exit")
+  ch = int(input("Enter your choice:"))
+  if(ch==1):
+    df = pd.read_csv("https://raw.githubusercontent.com/archi0503/sPerformance.csv/main/StudentsPerformance.csv")
+    print(df)
+  elif(ch==2):
+    g = int(input("Enter the number that can be used to display the elements greater than the given number"))
+    print(df.loc[0:,["math score","reading score","writing score"]] > g)
+    print(df[df.loc[0:,["math score","reading score","writing score"]] > g])
+  elif(ch==3):
+    df = pd.read_csv("https://raw.githubusercontent.com/archi0503/sPerformance.csv/main/StudentsPerformance.csv")
+    df[df["math score"] % 2 == 0] = 1
+    df[df["reading score"] % 2 == 0] = 1
+    df[df["writing score"] % 2 == 0] = 1
+    print(df.loc[:,["math score","reading score","writing score"]])
+    print(df)
+  elif(ch==4):
+    break
+  else:
+    print("Wrong Choice")
